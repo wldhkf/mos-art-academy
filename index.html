@@ -1,15 +1,52 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <title>MOS Contact</title>
-    <style>
-        body { text-align: center; font-family: Arial, sans-serif; margin-top: 100px; }
-        a { text-decoration: none; color: #333; font-size: 20px; }
-    </style>
+  <meta charset="UTF-8">
+  <title>mos contact</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background-color: #ffffff;
+      color: #000000;
+    }
+    header {
+      padding: 20px;
+      text-align: center;
+    }
+    main {
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    .contact {
+      margin-top: 40px;
+      text-align: center;
+    }
+    .contact a {
+      color: #000000;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    @media (max-width: 600px) {
+      main {
+        padding: 10px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <h2>MOS Contact</h2>
-    <p><a href="mailto:your-email@example.com">artacacemy.mos@gmail.com</a></p>
+  <header>
+    <h1>mos contact</h1>
+  </header>
+  <main>
+    <p>mos is art academy brand based in Jeju.</p>
+    <p>Our academy delivers a well-balanced program that integrates creative exploration with structured art foundations, guiding students to develop both visual insight and expressive clarity.</p>
+    <div class="contact">
+      <p>DM us on instagram @mos.art.academy</p>
+      <p>or please send an email: <a href="mailto:your-email@example.com">artacademy.mos@gmail.com</a></p>
+    </div>
+  </main>
 </body>
 </html>
