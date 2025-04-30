@@ -114,7 +114,7 @@
     © 2025 mos. All rights reserved.
   </footer> <!-- body 안, main 아래에 footer 위치! -->
 
-  <canvas id="noise" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
+<canvas id="noise" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
 <script>
   const canvas = document.getElementById('noise');
   const ctx = canvas.getContext('2d');
@@ -129,19 +129,14 @@
     const buffer32 = new Uint32Array(imageData.data.buffer);
     const len = buffer32.length;
     for (let i = 0; i < len; i++) {
-      const gray = Math.random() * 255;
+      const gray = 210 + Math.random() * 30; // 밝은 회색 톤만 사용
       buffer32[i] = (255 << 24) | (gray << 16) | (gray << 8) | gray;
     }
     ctx.putImageData(imageData, 0, 0);
   }
 
-  function loop() {
-    generateNoise();
-    requestAnimationFrame(loop);
-  }
-
   resizeCanvas();
-  loop();
+  setInterval(generateNoise, 100); // 100ms 간격으로 그리기
   window.addEventListener('resize', resizeCanvas);
 </script>
 
