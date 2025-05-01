@@ -169,9 +169,25 @@
   setInterval(generateNoise, 200); // 100ms 간격으로 그리기 < 숫자가 커질수 록 느려짐 
   window.addEventListener('resize', resizeCanvas);
 
-  const insta = document.getElementById('insta-text');
   const dog = document.getElementById('dog-egg');
 
+  // 모바일인지 감지
+  const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+
+  if (isMobile) {
+    // 접속 후 1초 뒤 등장, 5초 후 사라짐
+    setTimeout(() => {
+      dog.style.display = 'block';
+      dog.style.opacity = '1';
+    }, 1000);
+
+    setTimeout(() => {
+      dog.style.display = 'none';
+    }, 6000);
+  }
+
+  // 기존 click 동작도 유지
+  const insta = document.getElementById('insta-text');
   insta.addEventListener('click', () => {
     dog.style.display = 'block';
     setTimeout(() => {
