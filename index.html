@@ -73,6 +73,23 @@
         width: 100%;
       }
     }
+
+     <!-- 이스터에그용 도트 강아지 -->
+    #dog-egg {
+  position: absolute;
+  display: none;
+  width: 80px;
+  z-index: 999;
+  transition: transform 0.3s ease;
+}
+
+@media (hover: hover) {
+  #insta-text:hover + #dog-egg {
+    display: block;
+    transform: translateY(-50px);
+  }
+}
+    
   </style>
 </head>
 <body> <!-- body는 여기서 시작! -->
@@ -98,6 +115,8 @@
         <a href="https://www.instagram.com/mos.art.ac/" target="_blank">@mos.art.ac</a>
       </p>
 
+       <img id="dog-egg" src="https://i.imgur.com/b5nx7p6.png" alt="pixel dog" />
+      
       <p style="margin: 6px 0; line-height: 1.4;">
         email proposals
         <a href="mailto:artacademy.mos@gmail.com">artacademy.mos@gmail.com</a>
@@ -138,6 +157,22 @@
   resizeCanvas();
   setInterval(generateNoise, 200); // 100ms 간격으로 그리기 < 숫자가 커질수 록 느려짐 
   window.addEventListener('resize', resizeCanvas);
+
+    const insta = document.getElementById('insta-text');
+  const dog = document.getElementById('dog-egg');
+
+  insta.addEventListener('click', () => {
+    dog.style.display = 'block';
+    const rect = insta.getBoundingClientRect();
+    dog.style.left = rect.left + 'px';
+    dog.style.top = (rect.top + window.scrollY - 50) + 'px';
+
+    setTimeout(() => {
+      dog.style.display = 'none';
+    }, 2000);
+  });
+
+  
 </script>
 
 </body>
