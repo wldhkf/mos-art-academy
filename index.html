@@ -78,9 +78,11 @@
 #dog-egg {
   position: absolute;
   display: none;
-  width: 24px; /* 약 1/10로 축소 */
+  width: 40px;
   z-index: 999;
-  transform: translateY(-40px);
+  top: -25px;           /* 덜 띄우기 */
+  left: 0;
+  transform: none;      /* 위로 이동 효과 제거 */
   transition: opacity 0.3s ease;
 }
 
