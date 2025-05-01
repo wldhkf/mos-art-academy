@@ -174,17 +174,21 @@
   // 모바일인지 감지
   const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
 
-  if (isMobile) {
-    // 접속 후 1초 뒤 등장, 5초 후 사라짐
-    setTimeout(() => {
-      dog.style.display = 'block';
-      dog.style.opacity = '1';
-    }, 1000);
+if (isMobile) {
+  setTimeout(() => {
+    // GIF 리셋: src 재할당
+    const originalSrc = dog.src;
+    dog.src = '';         // 비워서 잠깐 제거
+    dog.src = originalSrc; // 다시 할당해서 애니메이션 재생
 
-    setTimeout(() => {
-      dog.style.display = 'none';
-    }, 6000);
-  }
+    dog.style.display = 'block';
+    dog.style.opacity = '1';
+  }, 1000);
+
+  setTimeout(() => {
+    dog.style.display = 'none';
+  }, 6000);
+}
 
   // 기존 click 동작도 유지
   const insta = document.getElementById('insta-text');
