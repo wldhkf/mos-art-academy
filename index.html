@@ -159,39 +159,37 @@
     const buffer32 = new Uint32Array(imageData.data.buffer);
     const len = buffer32.length;
     for (let i = 0; i < len; i++) {
-      const gray = 210 + Math.random() * 30; // 밝은 회색 톤만 사용
+      const gray = 210 + Math.random() * 30; // 밝은 회색 톤
       buffer32[i] = (255 << 24) | (gray << 16) | (gray << 8) | gray;
     }
     ctx.putImageData(imageData, 0, 0);
   }
 
+  // 자글자글 노이즈 초기 실행
   resizeCanvas();
-  setInterval(generateNoise, 200); // 100ms 간격으로 그리기 < 숫자가 커질수 록 느려짐 
-  window.addEventListener('resize', resizeCanvas);
+  generateNoise(); // ✅ 첫 프레임 노이즈 바로 그리기
+  setInterval(generateNoise, 120); // 반복적으로 노이즈 갱신
 
-const dog = document.getElementById('dog-egg');
-const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
+  window.addEventListener('resize', () => {
+    resizeCanvas();
+    generateNoise();
+  });
 
-if (isMobile) {
-  setTimeout(() => {
-    dog.style.display = 'block';
-    dog.style.opacity = '1';
-  }, 1000);
+  // 🐶 강아지 등장 스크립트
+  const dog = document.getElementById('dog-egg');
+  const isMobile = /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
 
-  setTimeout(() => {
-    dog.style.display = 'none';
-  }, 6000);
-}
+  if (isMobile) {
+    setTimeout(() => {
+      dog.style.display = 'block';
+      dog.style.opacity = '1';
+    }, 1000);
 
-const insta = document.getElementById('insta-text');
-insta.addEventListener('click', () => {
-  dog.style.display = 'block';
-  setTimeout(() => {
-    dog.style.display = 'none';
-  }, 2000);
-});
+    setTimeout(() => {
+      dog.style.display = 'none';
+    }, 6000);
+  }
 
-  // 기존 click 동작도 유지
   const insta = document.getElementById('insta-text');
   insta.addEventListener('click', () => {
     dog.style.display = 'block';
@@ -199,7 +197,6 @@ insta.addEventListener('click', () => {
       dog.style.display = 'none';
     }, 2000);
   });
-  
 </script>
 
 </body>
