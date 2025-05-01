@@ -78,7 +78,7 @@
 #dog-egg {
   position: absolute;
   display: none;
-  width: 54px;
+  width: 60px;
   z-index: 999;
   top: -15px;           /* 덜 띄우기 */
   left: 0;
@@ -176,13 +176,14 @@
 
 if (isMobile) {
   setTimeout(() => {
-    // GIF 리셋: src 재할당
     const originalSrc = dog.src;
-    dog.src = '';         // 비워서 잠깐 제거
-    dog.src = originalSrc; // 다시 할당해서 애니메이션 재생
+    dog.src = ''; // 강제로 비움
 
-    dog.style.display = 'block';
-    dog.style.opacity = '1';
+    setTimeout(() => {
+      dog.src = originalSrc; // 다시 로드 → 애니메이션 재생됨
+      dog.style.display = 'block';
+      dog.style.opacity = '1';
+    }, 50);
   }, 1000);
 
   setTimeout(() => {
