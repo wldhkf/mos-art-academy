@@ -74,18 +74,27 @@
       }
     }
 
+/* 이스터에그용 도트 강아지 */
 #dog-egg {
   position: absolute;
   display: none;
-  width: 80px;
+  width: 60px;
   z-index: 999;
-  transition: transform 0.3s ease;
+  transform: translateY(-50px);
+  transition: opacity 0.3s ease;
+}
+
+#insta-container {
+  position: relative;
+  display: inline-block;
 }
 
 @media (hover: hover) {
-  #insta-text:hover + #dog-egg {
+  #insta-container:hover #dog-egg {
     display: block;
-    transform: translateY(-50px);
+    position: absolute;
+    left: 0;
+    top: -70px;
   }
 }
     
@@ -111,10 +120,11 @@
 
 <p style="margin: 6px 0; line-height: 1.4;">
   come see our story unfold on instagram
-  <a id="insta-text" href="https://www.instagram.com/mos.art.ac/" target="_blank">@mos.art.ac</a>
+  <span id="insta-container">
+    <a id="insta-text" href="https://www.instagram.com/mos.art.ac/" target="_blank">@mos.art.ac</a>
+    <img id="dog-egg" src="https://raw.githubusercontent.com/jakejarvis/pixel-pets/main/dog.gif" alt="pixel dog" />
+  </span>
 </p>
-
-<img id="dog-egg" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Golde33443.svg/64px-Golde33443.svg.png" alt="pixel dog" />
       
       <p style="margin: 6px 0; line-height: 1.4;">
         email proposals
@@ -157,20 +167,15 @@
   setInterval(generateNoise, 200); // 100ms 간격으로 그리기 < 숫자가 커질수 록 느려짐 
   window.addEventListener('resize', resizeCanvas);
 
-    const insta = document.getElementById('insta-text');
+  const insta = document.getElementById('insta-text');
   const dog = document.getElementById('dog-egg');
 
   insta.addEventListener('click', () => {
     dog.style.display = 'block';
-    const rect = insta.getBoundingClientRect();
-    dog.style.left = rect.left + 'px';
-    dog.style.top = (rect.top + window.scrollY - 50) + 'px';
-
     setTimeout(() => {
       dog.style.display = 'none';
     }, 2000);
   });
-
   
 </script>
 
