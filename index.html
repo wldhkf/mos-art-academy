@@ -54,15 +54,45 @@
       line-height: 1.5;
     }
 
-    .footer {
-      position: fixed;
-      bottom: 0;
-      right: 0;
-      font-size: 12px;
-      color: #555;
-      padding: 5px 10px;
-    }
+    
+.footer-bottom{
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5px 10px;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 9px;      /* 네가 원하는 “영어 주소명(.address)과 같은 크기” */
+  color: #555;
+  background: #fff;    /* 노이즈/배경 위에서 글자 가독성 확보 */
+  z-index: 1000;
+}
+
+.footer-bottom .footer-left,
+.footer-bottom .footer-right{
+  margin: 0;
+  white-space: nowrap;
+}
+
+    
+/* 모바일에서 한 줄이 너무 길면 자동 줄바꿈되게 */
+@media (max-width: 600px){
+  .footer-bottom{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .footer-bottom .footer-left,
+  .footer-bottom .footer-right{
+    white-space: normal;
+  }
+}
+
+    
     @media (max-width: 600px) {
       body {
         padding-left: 20px;
@@ -140,12 +170,6 @@
     </div>
   </main>
 
-<div class="footer-bottom">
-  <span class="footer-left footer-addr-font">서귀포교육지원청 등록 제811호</span>
-  <span class="footer-right footer-addr-font">© 2025 mos. All rights reserved.</span>
-  
-  </footer> <!-- body 안, main 아래에 footer 위치! -->
-
 <canvas id="noise" style="position: fixed; top: 0; left: 0; z-index: -1;"></canvas>
 <script>
   const canvas = document.getElementById('noise');
@@ -201,6 +225,11 @@
   });
 </script>
 
+
+<div class="footer-bottom">
+  <span class="footer-left footer-addr-font">서귀포교육지원청 등록 제811호</span>
+  <span class="footer-right footer-addr-font">© 2025 mos. All rights reserved.</span>
+  </footer> <!-- body 안, main 아래에 footer 위치! -->
 
 
   
