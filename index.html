@@ -66,9 +66,11 @@
   justify-content: space-between;
   align-items: center;
 
-  font-size: 9px;      /* 네가 원하는 “영어 주소명(.address)과 같은 크기” */
+  font-size: 9px;      /* “영어 주소명(.address)과 같은 크기” */
   color: #555;
-  background: #fff;    /* 노이즈/배경 위에서 글자 가독성 확보 */
+  
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(2px);    /* 노이즈/배경 위에서 얇은 반투명 적용 글자 가독성 확보 */
   z-index: 1000;
 }
 
